@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en" class="overflow-x-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>MK&HA Mobiles | Latest Smartphones, Accessories & Repairs</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { overflow-x: hidden; width: 100%; }
+        ::-webkit-scrollbar { width: 8px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #0284c7; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0369a1; }
+        /* Hide scrollbar on horizontal category nav while retaining scroll functionality */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen font-sans antialiased selection:bg-brand-600 selection:text-white">
+
+    <!-- Announcement Bar -->
+    <div class="bg-gray-900 text-white text-[11px] sm:text-xs py-2 px-3 sm:px-6 border-b border-gray-800">
+        <div class="max-w-7xl 2xl:max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-1.5 sm:gap-4 text-center sm:text-left">
+            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1">
+                <span><i class="fa-solid fa-truck-fast text-brand-500 mr-1.5"></i>Free Next-Day UK Delivery over £50</span>
+                <span class="hidden lg:inline text-gray-700">|</span>
+                <span class="hidden lg:inline"><i class="fa-solid fa-wrench text-brand-500 mr-1.5"></i>Express Screen & Battery Replacement</span>
+            </div>
+            <div class="flex items-center justify-center space-x-3 sm:space-x-4 shrink-0">
+                <a href="tel:+447585607736" class="hover:text-brand-500 transition py-0.5"><i class="fa-solid fa-phone mr-1 text-brand-500"></i>+44 7585607736</a>
+                <span class="text-gray-700">|</span>
+                <a href="#contact" class="hover:text-brand-500 transition py-0.5"><i class="fa-solid fa-location-dot mr-1 text-brand-500"></i>London, E6 2ES</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl 2xl:max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-4">
+            <div class="flex items-center justify-between gap-2 sm:gap-4">
+                
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center space-x-2 sm:space-x-3 group shrink-0">
+                    <div class="bg-gradient-to-tr from-brand-700 to-accent-600 text-white p-2 sm:p-2.5 rounded-xl shadow-md group-hover:scale-105 transition transform">
+                        <i class="fa-solid fa-mobile-screen-button text-lg sm:text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-lg sm:text-2xl font-black tracking-tight text-gray-900 flex items-center leading-none">
+                            MK&HA <span class="text-brand-600 ml-1 sm:ml-1.5 font-extrabold">Mobiles</span>
+                        </div>
+                        <span class="hidden sm:block text-[9px] lg:text-[10px] text-gray-500 font-semibold tracking-wider uppercase mt-0.5">
+                            SMARTPHONES • ACCESSORIES • REPAIRS
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Search Bar (Tablet & Desktop) -->
+                <div class="hidden md:flex flex-1 max-w-md lg:max-w-xl mx-2 lg:mx-6 relative">
+                    <input type="text" id="searchInput" onkeyup="handleSearch()" placeholder="Search iPhone 17, Galaxy S24, cases, chargers, repair..." 
+                           class="w-full pl-10 pr-10 py-2.5 bg-gray-100 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-brand-600 focus:bg-white transition">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-gray-400"></i>
+                    <button id="clearSearchBtn" onclick="clearSearch()" aria-label="Clear search" class="hidden absolute right-3.5 top-2.5 text-gray-400 hover:text-gray-600 p-0.5">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- User Actions -->
+                <div class="flex items-center space-x-1.5 sm:space-x-3 lg:space-x-4 shrink-0">
+                    
+                    <!-- Trade-in Quick Button -->
+                    <button onclick="toggleModal('tradeInModal')" class="hidden xl:flex items-center space-x-1.5 text-xs font-bold text-brand-700 bg-brand-50 border border-brand-200 px-3.5 py-2.5 rounded-xl hover:bg-brand-100 transition cursor-pointer">
+                        <i class="fa-solid fa-arrows-rotate text-brand-600"></i>
+                        <span>Trade-In & Sell</span>
+                    </button>
+
+                    <!-- Account Profile Dropdown -->
+                    <div class="relative">
+                        <button id="profileMenuBtn" onclick="toggleProfileDropdown(event)" class="flex items-center space-x-1.5 sm:space-x-2 text-gray-700 hover:text-brand-600 focus:outline-none p-1.5 rounded-xl hover:bg-gray-50 transition cursor-pointer min-h-[40px]">
+                            <div class="w-8 h-8 sm:w-9 sm:h-9 bg-brand-100 text-brand-700 rounded-full flex items-center justify-center font-bold text-sm border-2 border-brand-500 shadow-xs shrink-0">
+                                <i class="fa-regular fa-user"></i>
+                            </div>
+                            <div class="text-left hidden lg:block">
+                                <span id="profileNavLabel" class="block text-xs font-bold leading-tight max-w-[110px] truncate">Account</span>
+                                <span id="profileNavSub" class="block text-[10px] text-gray-500">Sign In / Sign Up</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-down text-[10px] sm:text-xs text-gray-400"></i>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-60 bg-white rounded-2xl shadow-xl border border-gray-100 py-2 z-50 text-sm">
+                            <div id="loggedOutMenu">
+                                <div class="px-4 py-3 border-b border-gray-100 bg-gray-50/70 rounded-t-2xl">
+                                    <p class="text-xs text-gray-500">Welcome to MK&HA Mobiles</p>
+                                    <p class="text-xs font-bold text-gray-800 mt-0.5">Sign in to checkout & track orders</p>
+                                </div>
+                                <button type="button" onclick="openAuthModal('login', false, event)" class="w-full text-left px-4 py-3 hover:bg-brand-50 text-brand-700 font-bold flex items-center space-x-2.5 transition cursor-pointer">
+                                    <i class="fa-solid fa-right-to-bracket text-brand-600 w-4"></i>
+                                    <span>Sign In</span>
+                                </button>
+                                <button type="button" onclick="openAuthModal('register', false, event)" class="w-full text-left px-4 py-3 hover:bg-brand-50 text-gray-700 font-semibold flex items-center space-x-2.5 transition cursor-pointer">
+                                    <i class="fa-solid fa-user-plus text-accent-600 w-4"></i>
+                                    <span>Create Account (Sign Up)</span>
+                                </button>
+                            </div>
+                            <div id="loggedInMenu" class="hidden">
+                                <div class="px-4 py-3 border-b border-gray-100 bg-gray-50/70">
+                                    <p class="text-[11px] text-gray-500">Signed in as</p>
+                                    <p id="loggedInUserName" class="text-xs font-extrabold text-gray-900 truncate">Customer</p>
+                                    <p id="loggedInUserEmail" class="text-[11px] text-gray-500 truncate">user@example.com</p>
+                                </div>
+                                <button type="button" onclick="handleLogout(event)" class="w-full text-left px-4 py-2.5 hover:bg-red-50 text-red-600 text-xs font-semibold flex items-center space-x-2.5 border-t border-gray-100 mt-1 cursor-pointer">
+                                    <i class="fa-solid fa-arrow-right-from-bracket w-4"></i>
+                                    <span>Sign Out</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cart Trigger Button -->
+                    <button onclick="toggleCartDrawer()" aria-label="Open shopping cart" class="flex items-center space-x-2 bg-brand-600 text-white px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl hover:bg-brand-700 transition shadow-sm relative min-h-[40px] cursor-pointer">
+                        <div class="relative">
+                            <i class="fa-solid fa-cart-shopping text-base sm:text-lg"></i>
+                            <span id="cartCount" class="absolute -top-2 -right-2.5 bg-red-500 text-white font-bold text-[10px] sm:text-xs rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center border-2 border-white">0</span>
+                        </div>
+                        <span id="cartTotalHeader" class="hidden sm:inline text-xs sm:text-sm font-bold ml-1.5">£0.00</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Search Bar (Phones & Small Tablets) -->
+            <div class="mt-2.5 md:hidden relative">
+                <input type="text" id="mobileSearchInput" onkeyup="handleMobileSearch()" placeholder="Search smartphones, accessories & repairs..." 
+                       class="w-full pl-9 pr-9 py-2 bg-gray-100 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-600 focus:bg-white transition">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gray-400 text-sm"></i>
+                <button id="clearMobileSearchBtn" onclick="clearSearch()" aria-label="Clear search" class="hidden absolute right-3 top-2 text-gray-400 hover:text-gray-600 p-0.5">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation Categories -->
+        <nav class="bg-gray-900 text-white border-t border-gray-800 overflow-x-auto no-scrollbar">
+            <div class="max-w-7xl 2xl:max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8 flex items-center space-x-1.5 sm:space-x-2 py-1.5 text-xs sm:text-sm whitespace-nowrap">
+                <button onclick="filterCategory('all', this)" class="category-btn active px-3.5 sm:px-4 py-2 rounded-lg font-semibold bg-brand-600 text-white transition cursor-pointer shrink-0">
+                    <i class="fa-solid fa-border-all mr-1.5"></i>All Products
+                </button>
+                <button onclick="filterCategory('apple', this)" class="category-btn px-3.5 sm:px-4 py-2 rounded-lg font-medium text-gray-300 hover:text-white hover:bg-gray-800 transition cursor-pointer shrink-0">
+                    <i class="fa-brands fa-apple mr-1.5"></i>Apple iPhones
+                </button>
+                <button onclick="filterCategory('samsung', this)" class="category-btn px-3.5 sm:px-4 py-2 rounded-lg font-medium text-gray-300 hover:text-white hover:bg-gray-800 transition cursor-pointer shrink-0">
+                    <i class="fa-solid fa-mobile mr-1.5 text-blue-400"></i>Samsung Galaxy
+                </button>
+                <button onclick="filterCategory('google', this)" class="category-btn px-3.5 sm:px-4 py-2 rounded-lg font-medium text-gray-300 hover:text-white hover:bg-gray-800 transition cursor-pointer shrink-0">
+                    <i class="fa-brands fa-google mr-1.5 text-red-400"></i>Google Pixel
+                </button>
+                <button onclick="filterCategory('accessories', this)" class="category-btn px-3.5 sm:px-4 py-2 rounded-lg font-medium text-gray-300 hover:text-white hover:bg-gray-800 transition cursor-pointer shrink-0">
+                    <i class="fa-solid fa-plug mr-1.5 text-yellow-400"></i>Cases & Chargers
+                </button>
+                <button onclick="filterCategory('repairs', this)" class="category-btn px-3.5 sm:px-4 py-2 rounded-lg font-medium text-gray-300 hover:text-white hover:bg-gray-800 transition cursor-pointer shrink-0">
+                    <i class="fa-solid fa-screwdriver-wrench mr-1.5 text-emerald-400"></i>Repair Services
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-gray-900 via-brand-900 to-gray-900 text-white py-8 sm:py-12 lg:py-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#0ea5e9_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        <div class="max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+            <div class="text-center lg:text-left lg:max-w-xl xl:max-w-2xl">
+                <span class="inline-block bg-brand-500 text-gray-900 font-extrabold text-[10px] sm:text-xs uppercase px-3 sm:px-3.5 py-1 rounded-full mb-3 tracking-wider shadow-md">
+                    London's Premier Mobile Retailer & Repair Lab
+                </span>
+                <h1 class="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+                    Upgrade Your Phone. Fix Any Screen.
+                </h1>
+                <p class="mt-3 text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                    Shop brand new & certified refurbished smartphones with official warranty. Expert same-day repairs available at 252 Burges Road, London.
+                </p>
+                <div class="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3">
+                    <a href="#products-section" class="bg-brand-600 hover:bg-brand-500 text-white font-bold px-6 py-3.5 rounded-xl transition shadow-lg transform hover:-translate-y-0.5 text-center text-sm sm:text-base">
+                        Shop Smartphones <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <button onclick="toggleModal('repairModal')" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3.5 rounded-xl backdrop-blur-sm border border-white/20 transition text-center text-sm sm:text-base cursor-pointer">
+                        <i class="fa-solid fa-screwdriver-wrench mr-2 text-brand-400"></i>Book Phone Repair
+                    </button>
+                </div>
+            </div>
+
+            <!-- Showcase Feature Grid -->
+            <div class="w-full max-w-lg lg:max-w-none lg:w-auto grid grid-cols-2 gap-3 sm:gap-4 shrink-0">
+                <div class="bg-white/10 backdrop-blur-md p-4 sm:p-5 rounded-2xl sm:rounded-3xl border border-white/10 text-center">
+                    <i class="fa-solid fa-shield-halved text-2xl sm:text-4xl text-brand-400 mb-2"></i>
+                    <h3 class="font-bold text-xs sm:text-sm">12 Months Warranty</h3>
+                    <p class="text-[11px] sm:text-xs text-gray-300 mt-0.5">On all device purchases</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md p-4 sm:p-5 rounded-2xl sm:rounded-3xl border border-white/10 text-center">
+                    <i class="fa-solid fa-bolt text-2xl sm:text-4xl text-yellow-400 mb-2"></i>
+                    <h3 class="font-bold text-xs sm:text-sm">Express 30-Min Fix</h3>
+                    <p class="text-[11px] sm:text-xs text-gray-300 mt-0.5">In-store screen repairs</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md p-4 sm:p-5 rounded-2xl sm:rounded-3xl border border-white/10 text-center">
+                    <i class="fa-solid fa-arrows-rotate text-2xl sm:text-4xl text-emerald-400 mb-2"></i>
+                    <h3 class="font-bold text-xs sm:text-sm">Top Trade-in Value</h3>
+                    <p class="text-[11px] sm:text-xs text-gray-300 mt-0.5">Instant cash for old phones</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md p-4 sm:p-5 rounded-2xl sm:rounded-3xl border border-white/10 text-center">
+                    <i class="fa-solid fa-award text-2xl sm:text-4xl text-accent-500 mb-2"></i>
+                    <h3 class="font-bold text-xs sm:text-sm">100% Genuine</h3>
+                    <p class="text-[11px] sm:text-xs text-gray-300 mt-0.5">OEM Parts & Accessories</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl 2xl:max-w-[1440px] w-full mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8" id="products-section">
+
+        <!-- Controls Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-6 sm:mb-8 bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+            <div>
+                <h2 class="text-lg sm:text-2xl font-bold text-gray-900 flex flex-wrap items-center gap-2">
+                    <span id="currentCategoryTitle">All Smartphones & Accessories</span>
+                    <span id="productCountBadge" class="text-xs bg-brand-100 text-brand-800 font-bold px-2.5 py-1 rounded-full">0 items</span>
+                </h2>
+                <p class="text-xs text-gray-500 mt-1">Genuine phones, unlocked handsets, and high quality accessories</p>
+            </div>
+
+            <!-- Sorting -->
+            <div class="flex items-center justify-between sm:justify-end space-x-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-gray-100">
+                <label for="sortBy" class="text-xs font-semibold text-gray-600 shrink-0">Sort by:</label>
+                <select id="sortBy" onchange="sortProducts()" class="bg-gray-50 border border-gray-200 rounded-xl text-xs sm:text-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500 w-full sm:w-auto">
+                    <option value="featured">Featured</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="name">Name (A-Z)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Responsive Product Grid -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+            <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden text-center py-12 sm:py-16 px-4 bg-white rounded-2xl shadow-sm border border-gray-100 my-6">
+            <i class="fa-solid fa-mobile-retro text-5xl text-gray-300 mb-4"></i>
+            <h3 class="text-lg font-bold text-gray-700">No phones or accessories matched</h3>
+            <p class="text-sm text-gray-500 mt-1">Try adjusting your search terms or filter selection.</p>
+            <button onclick="clearSearch(); filterCategory('all', document.querySelector('.category-btn'))" class="mt-4 bg-brand-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm hover:bg-brand-700 transition cursor-pointer">
+                Reset Filters
+            </button>
+        </div>
+
+        <!-- Repair & Trade-in Promo Banners -->
+        <section class="mt-12 sm:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6" id="services">
+            <!-- Express Repair Banner -->
+            <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden shadow-lg border border-slate-700">
+                <div class="relative z-10">
+                    <span class="bg-emerald-400 text-slate-950 text-[11px] font-extrabold px-3 py-1 rounded-full uppercase">In-Store & Mail-in</span>
+                    <h3 class="text-xl sm:text-2xl font-black mt-3">Cracked Screen or Bad Battery?</h3>
+                    <p class="mt-2 text-slate-300 text-xs sm:text-sm max-w-md leading-relaxed">We repair iPhones, Samsung, Pixel, and iPads using high-grade original parts with warranty.</p>
+                    <button onclick="toggleModal('repairModal')" class="mt-5 bg-brand-500 hover:bg-brand-600 text-white font-bold px-5 py-2.5 rounded-xl transition text-xs sm:text-sm cursor-pointer">
+                        Book Repair Now <i class="fa-solid fa-wrench ml-1.5"></i>
+                    </button>
+                </div>
+                <div class="absolute -right-6 -bottom-6 opacity-10 text-8xl sm:text-9xl pointer-events-none">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                </div>
+            </div>
+
+            <!-- Trade-In Cash Banner -->
+            <div class="bg-gradient-to-r from-brand-900 to-indigo-900 rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden shadow-lg border border-brand-800">
+                <div class="relative z-10">
+                    <span class="bg-yellow-400 text-indigo-950 text-[11px] font-extrabold px-3 py-1 rounded-full uppercase">Instant Evaluation</span>
+                    <h3 class="text-xl sm:text-2xl font-black mt-3">Sell Your Old Phone for Cash</h3>
+                    <p class="mt-2 text-brand-100 text-xs sm:text-sm max-w-md leading-relaxed">Get top market prices when trading in your old phone towards a brand new smartphone upgrade.</p>
+                    <button onclick="toggleModal('tradeInModal')" class="mt-5 bg-white text-indigo-950 font-bold px-5 py-2.5 rounded-xl hover:bg-yellow-300 transition text-xs sm:text-sm cursor-pointer">
+                        Get Valuation <i class="fa-solid fa-coins ml-1.5"></i>
+                    </button>
+                </div>
+                <div class="absolute -right-6 -bottom-6 opacity-10 text-8xl sm:text-9xl pointer-events-none">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Shopping Cart Side Drawer -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+        <div onclick="toggleCartDrawer()" class="fixed inset-0 bg-gray-900/60 transition-opacity backdrop-blur-xs"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-4 sm:pl-10">
+            <div class="w-screen max-w-full sm:max-w-md bg-white shadow-2xl flex flex-col">
+                <div class="p-4 sm:p-6 bg-gray-900 text-white flex items-center justify-between">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-bag-shopping text-xl sm:text-2xl text-brand-500"></i>
+                        <h2 class="text-lg sm:text-xl font-bold">Your Mobile Cart</h2>
+                    </div>
+                    <button onclick="toggleCartDrawer()" aria-label="Close cart" class="text-gray-400 hover:text-white text-xl sm:text-2xl p-1.5 focus:outline-none cursor-pointer">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3 sm:space-y-4" id="cartItemsContainer"></div>
+                <div class="border-t border-gray-200 p-4 sm:p-6 bg-gray-50 space-y-2.5 sm:space-y-3">
+                    <div class="flex justify-between text-xs sm:text-sm text-gray-600">
+                        <span>Subtotal</span>
+                        <span id="cartSubtotal" class="font-semibold text-gray-900">£0.00</span>
+                    </div>
+                    <div class="flex justify-between text-xs sm:text-sm text-gray-600">
+                        <span>Tracked UK Delivery</span>
+                        <span id="cartDelivery" class="font-semibold text-gray-900">£4.99</span>
+                    </div>
+                    <div class="flex justify-between text-base font-extrabold text-gray-900 pt-2 border-t border-gray-200">
+                        <span>Total Amount</span>
+                        <span id="cartTotal" class="text-lg sm:text-xl text-brand-700">£0.00</span>
+                    </div>
+                    <button onclick="openCheckoutModal()" id="checkoutBtn" class="w-full bg-brand-600 hover:bg-brand-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-bold py-3.5 px-4 rounded-xl shadow-lg transition flex items-center justify-center space-x-2 cursor-pointer text-sm sm:text-base">
+                        <i class="fa-solid fa-lock text-xs"></i>
+                        <span>Proceed to Checkout</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <p id="cartAuthHint" class="text-[11px] text-center text-gray-500">
+                        <i class="fa-solid fa-circle-info text-brand-600 mr-1"></i>Sign in or create an account required at checkout
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unified Checkout Sign-In / Sign-Up Authentication Modal -->
+    <div id="authModal" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/65 backdrop-blur-xs hidden p-3 sm:p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-5 sm:p-7 shadow-2xl relative max-h-[92vh] overflow-y-auto">
+            <button onclick="closeAuthModal()" aria-label="Close modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 p-1.5 cursor-pointer">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <!-- Checkout Requirement Notice Banner -->
+            <div id="checkoutAuthNotice" class="hidden mb-4 p-3 rounded-2xl bg-brand-50 border border-brand-200 flex items-start space-x-2.5">
+                <i class="fa-solid fa-shield-halved text-brand-600 text-base mt-0.5 shrink-0"></i>
+                <div class="text-xs text-brand-900">
+                    <p class="font-bold">Account Required for Checkout</p>
+                    <p class="text-brand-700 mt-0.5">Please sign in or create a free MK&HA Mobiles account to complete your order.</p>
+                </div>
+            </div>
+
+            <!-- Modal Header -->
+            <div class="text-center mb-5">
+                <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center mx-auto mb-2.5 text-xl">
+                    <i id="authModalIcon" class="fa-solid fa-right-to-bracket"></i>
+                </div>
+                <h3 id="authModalTitle" class="text-xl font-extrabold text-gray-900">Sign In to Your Account</h3>
+                <p id="authModalSubtitle" class="text-xs text-gray-500 mt-1">Access fast checkout, warranty records & order tracking</p>
+            </div>
+
+            <!-- Interactive Sign In / Sign Up Switcher Tabs -->
+            <div class="grid grid-cols-2 bg-gray-100 p-1 rounded-xl mb-5">
+                <button type="button" id="tabLoginBtn" onclick="switchAuthTab('login')" class="py-2 text-xs sm:text-sm font-bold rounded-lg bg-white text-brand-700 shadow-xs transition cursor-pointer">
+                    Sign In
+                </button>
+                <button type="button" id="tabRegisterBtn" onclick="switchAuthTab('register')" class="py-2 text-xs sm:text-sm font-bold rounded-lg text-gray-600 hover:text-gray-900 transition cursor-pointer">
+                    Sign Up (New)
+                </button>
+            </div>
+
+            <!-- Sign In Form -->
+            <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-3.5">
+                <div>
+                    <label for="loginEmail" class="block text-xs font-semibold text-gray-700 mb-1">Email Address</label>
+                    <input type="email" id="loginEmail" required placeholder="customer@example.com" class="w-full p-2.5 sm:p-3 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                </div>
+                <div>
+                    <label for="loginPassword" class="block text-xs font-semibold text-gray-700 mb-1">Password</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••" class="w-full p-2.5 sm:p-3 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                </div>
+                <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl shadow-lg transition text-sm cursor-pointer mt-2">
+                    <span id="loginSubmitText">Sign In</span> <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                </button>
+                <p class="text-center text-xs text-gray-500 pt-2">
+                    Don't have an account yet? 
+                    <button type="button" onclick="switchAuthTab('register')" class="text-brand-600 font-bold hover:underline cursor-pointer">Create Account</button>
+                </p>
+            </form>
+
+            <!-- Sign Up Form -->
+            <form id="registerForm" onsubmit="handleRegister(event)" class="space-y-3.5 hidden">
+                <div>
+                    <label for="regName" class="block text-xs font-semibold text-gray-700 mb-1">Full Name</label>
+                    <input type="text" id="regName" required placeholder="Alex Johnson" class="w-full p-2.5 sm:p-3 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                </div>
+                <div>
+                    <label for="regEmail" class="block text-xs font-semibold text-gray-700 mb-1">Email Address</label>
+                    <input type="email" id="regEmail" required placeholder="alex@example.com" class="w-full p-2.5 sm:p-3 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                </div>
+                <div>
+                    <label for="regPassword" class="block text-xs font-semibold text-gray-700 mb-1">Create Password</label>
+                    <input type="password" id="regPassword" required minlength="6" placeholder="Min. 6 characters" class="w-full p-2.5 sm:p-3 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                </div>
+                <button type="submit" class="w-full bg-accent-600 hover:bg-accent-500 text-white font-bold py-3 rounded-xl shadow-lg transition text-sm cursor-pointer mt-2">
+                    <span id="registerSubmitText">Sign Up & Create Account</span> <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                </button>
+                <p class="text-center text-xs text-gray-500 pt-2">
+                    Already have an account? 
+                    <button type="button" onclick="switchAuthTab('login')" class="text-brand-600 font-bold hover:underline cursor-pointer">Sign In</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/65 backdrop-blur-xs hidden p-3 sm:p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto">
+            <button onclick="toggleModal('checkoutModal')" aria-label="Close checkout" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 p-1.5 cursor-pointer">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div class="text-center mb-5">
+                <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center mx-auto mb-2.5 text-xl">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">Checkout - MK&HA Mobiles</h3>
+                <p class="text-xs text-gray-500 mt-0.5">Ordering as <span id="checkoutAccountBadge" class="font-bold text-brand-700">Customer</span></p>
+            </div>
+            <form onsubmit="handleCheckoutSubmit(event)" class="space-y-3.5">
+                <div>
+                    <label for="checkoutFullName" class="block text-xs font-semibold text-gray-700 mb-1">Full Name</label>
+                    <input type="text" id="checkoutFullName" required placeholder="John Smith" class="w-full p-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                </div>
+                <div>
+                    <label for="checkoutAddress" class="block text-xs font-semibold text-gray-700 mb-1">Delivery Address</label>
+                    <textarea id="checkoutAddress" required placeholder="252 Burges Road, London, E6 2ES" rows="2" class="w-full p-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none"></textarea>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label for="checkoutPhone" class="block text-xs font-semibold text-gray-700 mb-1">Phone Number</label>
+                        <input type="tel" id="checkoutPhone" required placeholder="07123456789" class="w-full p-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label for="checkoutPostcode" class="block text-xs font-semibold text-gray-700 mb-1">Postcode</label>
+                        <input type="text" id="checkoutPostcode" required placeholder="E6 2ES" class="w-full p-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label for="checkoutPayment" class="block text-xs font-semibold text-gray-700 mb-1">Payment Method</label>
+                    <select id="checkoutPayment" class="w-full p-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none bg-white">
+                        <option>Credit / Debit Card</option>
+                        <option>Apple Pay / Google Pay</option>
+                        <option>Store Collection & Pay in Person</option>
+                    </select>
+                </div>
+                <div class="pt-3 border-t border-gray-100 flex justify-between items-center text-sm font-bold">
+                    <span>Total Amount:</span>
+                    <span id="modalCartTotal" class="text-brand-700 text-lg">£0.00</span>
+                </div>
+                <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition text-sm cursor-pointer">
+                    Confirm & Complete Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Repair Booking Modal -->
+    <div id="repairModal" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/65 backdrop-blur-xs hidden p-3 sm:p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto">
+            <button onclick="toggleModal('repairModal')" aria-label="Close repair modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 p-1.5 cursor-pointer">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div class="text-center mb-5">
+                <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-2 text-xl">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">Book Phone Repair</h3>
+                <p class="text-xs text-gray-500">Fast 30-min in-store turnarounds at Burges Road</p>
+            </div>
+            <form onsubmit="handleRepairSubmit(event)" class="space-y-3.5">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Phone Model</label>
+                    <input type="text" required placeholder="e.g. iPhone 14 Pro, Galaxy S23" class="w-full p-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Repair Needed</label>
+                    <select class="w-full p-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none bg-white">
+                        <option>Screen Replacement</option>
+                        <option>Battery Replacement</option>
+                        <option>Charging Port Repair</option>
+                        <option>Rear Glass Replacement</option>
+                        <option>Camera Lens / Sensor Repair</option>
+                        <option>Water Damage Diagnostics</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Your Name</label>
+                    <input type="text" required placeholder="Jane Doe" class="w-full p-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Contact Phone Number</label>
+                    <input type="tel" required placeholder="07987654321" class="w-full p-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                </div>
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl shadow-lg transition text-sm cursor-pointer">
+                    Book Repair Appointment
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Trade-In Valuation Modal -->
+    <div id="tradeInModal" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/65 backdrop-blur-xs hidden p-3 sm:p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto">
+            <button onclick="toggleModal('tradeInModal')" aria-label="Close trade-in modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 p-1.5 cursor-pointer">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div class="text-center mb-5">
+                <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-2 text-xl">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">Trade-In Device Valuation</h3>
+                <p class="text-xs text-gray-500">Instant estimated trade-in quote</p>
+            </div>
+            <form onsubmit="handleTradeInSubmit(event)" class="space-y-3.5">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Your Current Phone Model</label>
+                    <input type="text" id="tradeModel" required placeholder="e.g. iPhone 12 128GB" class="w-full p-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Device Condition</label>
+                    <select id="tradeCondition" class="w-full p-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none bg-white">
+                        <option value="good">Good Condition (Minor Scratches)</option>
+                        <option value="flawless">Flawless / Like New</option>
+                        <option value="fair">Heavy Signs of Use</option>
+                        <option value="faulty">Faulty / Cracked Glass</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl shadow-lg transition text-sm cursor-pointer">
+                    Calculate Valuation Quote
+                </button>
+            </form>
+            <div id="valuationResult" class="hidden mt-4 p-3.5 bg-brand-50 rounded-xl text-center text-xs text-brand-900 border border-brand-200">
+                Estimated Trade-in Value: <strong id="valuationAmount" class="text-lg text-brand-700 block my-0.5">£0.00</strong>
+                Bring your handset into MK&HA Mobiles for instant cash!
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/65 backdrop-blur-xs hidden p-3 sm:p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl relative">
+            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900" id="successTitle">Order Confirmed!</h3>
+            <p class="text-sm text-gray-600 mt-2 leading-relaxed" id="successMsg">Thank you for choosing MK&HA Mobiles. Your request is processed!</p>
+            <button onclick="toggleModal('successModal')" class="mt-6 w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl transition text-sm cursor-pointer">
+                Continue Shopping
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer with Company Details -->
+    <footer class="bg-gray-900 text-gray-300 mt-12 sm:mt-16 border-t-4 border-brand-600">
+        <div class="max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Col 1: About & Branding -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2.5">
+                        <div class="bg-brand-600 text-white p-2 rounded-lg">
+                            <i class="fa-solid fa-mobile-screen-button text-xl"></i>
+                        </div>
+                        <span class="text-xl font-black text-white">MK&HA Mobiles</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Your trusted London store for flagship smartphones, genuine phone accessories, rapid battery and screen repair, and top cash trade-ins.
+                    </p>
+                    <div class="flex space-x-3 text-gray-400">
+                        <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+                        <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition"><i class="fa-brands fa-instagram text-xs"></i></a>
+                        <a href="#" aria-label="WhatsApp" class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition"><i class="fa-brands fa-whatsapp text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Brand Navigation Links -->
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">Top Brands</h4>
+                    <ul class="space-y-2.5 text-xs">
+                        <li><a href="#products-section" onclick="filterCategory('apple', document.querySelectorAll('.category-btn')[1])" class="hover:text-brand-500 transition"><i class="fa-solid fa-angle-right text-gray-600 mr-1.5"></i>Apple iPhones & iPads</a></li>
+                        <li><a href="#products-section" onclick="filterCategory('samsung', document.querySelectorAll('.category-btn')[2])" class="hover:text-brand-500 transition"><i class="fa-solid fa-angle-right text-gray-600 mr-1.5"></i>Samsung Galaxy Series</a></li>
+                        <li><a href="#products-section" onclick="filterCategory('google', document.querySelectorAll('.category-btn')[3])" class="hover:text-brand-500 transition"><i class="fa-solid fa-angle-right text-gray-600 mr-1.5"></i>Google Pixel Devices</a></li>
+                        <li><a href="#products-section" onclick="filterCategory('accessories', document.querySelectorAll('.category-btn')[4])" class="hover:text-brand-500 transition"><i class="fa-solid fa-angle-right text-gray-600 mr-1.5"></i>Chargers, Cables & MagSafe</a></li>
+                        <li><a href="#services" onclick="toggleModal('repairModal')" class="hover:text-brand-500 transition"><i class="fa-solid fa-angle-right text-gray-600 mr-1.5"></i>In-Store Repair Lab</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Hours & Service Info -->
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">Store Working Hours</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li class="flex justify-between py-1 border-b border-gray-800">
+                            <span>Monday - Saturday:</span>
+                            <span class="text-white font-medium">9:00 AM - 7:00 PM</span>
+                        </li>
+                        <li class="flex justify-between py-1 border-b border-gray-800">
+                            <span>Sunday:</span>
+                            <span class="text-white font-medium">10:00 AM - 5:00 PM</span>
+                        </li>
+                        <li class="pt-2 text-gray-400 leading-relaxed">
+                            <i class="fa-solid fa-truck text-brand-500 mr-1.5"></i>Express courier delivery across London and UK nationwide.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Registered Company Details -->
+                <div id="contact">
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">Store & Registered Office</h4>
+                    <div class="space-y-3 text-xs">
+                        <p class="flex items-start">
+                            <i class="fa-solid fa-location-dot text-brand-500 mr-2.5 mt-0.5 text-sm shrink-0"></i>
+                            <span>
+                                <strong class="text-white block font-semibold">MK&HA Mobiles</strong>
+                                252 Burges Road,<br>
+                                London, England,<br>
+                                E6 2ES
+                            </span>
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fa-solid fa-id-card text-brand-500 mr-2.5 shrink-0"></i>
+                            <span>Company Number: <strong class="text-gray-200">17559451</strong></span>
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fa-solid fa-phone text-brand-500 mr-2.5 shrink-0"></i>
+                            <a href="tel:+447585607736" class="hover:text-white transition">+44 7585607736</a>
+                        </p>
+                        <p class="flex items-center break-all">
+                            <i class="fa-solid fa-envelope text-brand-500 mr-2.5 shrink-0"></i>
+                            <a href="mailto:mkhaltd97@gmail.com" class="hover:text-white transition">mkhaltd97@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Mandatory Copyright & Company Registration Details -->
+            <div class="mt-10 sm:mt-12 pt-6 border-t border-gray-800 flex flex-col lg:flex-row justify-between items-center text-xs text-gray-400 gap-4">
+                <div class="text-center lg:text-left space-y-1">
+                    <p>© <span id="year"></span> <strong>MK&HA LTD</strong>. All rights reserved.</p>
+                    <p class="text-gray-400 leading-relaxed">
+                        Registered Company Name: <span class="text-gray-300 font-semibold">MK&HA LTD</span> | 
+                        Company Number: <span class="text-gray-300 font-semibold">17559339</span> | 
+                        Address: <span class="text-gray-300">252 Burges Road, London, England, E6 2ES</span>
+                    </p>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 shrink-0">
+                    <span class="hover:text-gray-300 transition cursor-pointer">Privacy Policy</span>
+                    <span>•</span>
+                    <span class="hover:text-gray-300 transition cursor-pointer">Terms & Conditions</span>
+                    <span>•</span>
+                    <span class="hover:text-gray-300 transition cursor-pointer">Refund Policy</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Data & Logic -->
+    <script>
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        // Products Catalog
+        const products = [
+            // Apple
+            {
+                id: 1,
+                name: "Apple iPhone 17 Pro Max (256GB)",
+                category: "apple",
+                price: 1199.00,
+                unit: "Natural Titanium",
+                image: "https://i.ebayimg.com/images/g/ddEAAeSwRFppGusC/s-l1600.webp",
+                badge: "Flagship",
+                rating: 4.9
+            },
+            {
+                id: 2,
+                name: "Apple iPhone 14 (128GB)",
+                category: "apple",
+                price: 699.00,
+                unit: "Midnight Black",
+                image: "https://images.unsplash.com/photo-1663499482523-1c0c1bae4ce1?auto=format&fit=crop&w=600&q=80",
+                badge: "Popular",
+                rating: 4.8
+            },
+            {
+                id: 3,
+                name: "Apple iPhone 13 (128GB)",
+                category: "apple",
+                price: 549.00,
+                unit: "Starlight White",
+                image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=600&q=80",
+                badge: "Great Value",
+                rating: 4.8
+            },
+
+            // Samsung
+            {
+                id: 4,
+                name: "Samsung Galaxy S24 Ultra (512GB)",
+                category: "samsung",
+                price: 1249.00,
+                unit: "Titanium Gray",
+                image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=600&q=80",
+                badge: "AI Powered",
+                rating: 4.9
+            },
+            {
+                id: 5,
+                name: "Samsung Galaxy S23 FE (128GB)",
+                category: "samsung",
+                price: 599.00,
+                unit: "Mint Green",
+                image: "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=600&q=80",
+                badge: "Bestseller",
+                rating: 4.7
+            },
+
+            // Google
+            {
+                id: 6,
+                name: "Google Pixel 8 Pro (128GB)",
+                category: "google",
+                price: 899.00,
+                unit: "Bay Blue",
+                image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80",
+                badge: "Pro Camera",
+                rating: 4.8
+            },
+
+            // Accessories
+            {
+                id: 7,
+                name: "20W USB-C Fast Wall Charger",
+                category: "accessories",
+                price: 14.99,
+                unit: "Power Adapter",
+                image: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=600&q=80",
+                badge: "Essential",
+                rating: 4.9
+            },
+            {
+                id: 8,
+                name: "MagSafe Clear Shockproof Case",
+                category: "accessories",
+                price: 12.99,
+                unit: "iPhone 15 / 14 Series",
+                image: "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=600&q=80",
+                badge: "Protection",
+                rating: 4.7
+            },
+            {
+                id: 9,
+                name: "Anker 10,000mAh Magnetic Power Bank",
+                category: "accessories",
+                price: 34.99,
+                unit: "Wireless Battery Pack",
+                image: "https://images.unsplash.com/photo-1609592424074-77a83d736341?auto=format&fit=crop&w=600&q=80",
+                badge: "Travel",
+                rating: 4.9
+            },
+
+            // Repairs
+            {
+                id: 10,
+                name: "iPhone Screen Replacement Service",
+                category: "repairs",
+                price: 59.99,
+                unit: "Includes 6 Mo Warranty",
+                image: "https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?auto=format&fit=crop&w=600&q=80",
+                badge: "Express 30-Min",
+                rating: 5.0
+            },
+            {
+                id: 11,
+                name: "Genuine Battery Replacement Service",
+                category: "repairs",
+                price: 39.99,
+                unit: "All Smartphone Models",
+                image: "https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=600&q=80",
+                badge: "Same-Day",
+                rating: 4.9
+            }
+        ];
+
+        // Application State
+        let activeCategory = 'all';
+        let searchQuery = '';
+        let cart = [];
+        let currentUser = null;
+        let pendingCheckoutRedirect = false;
+
+        // Initializer
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCartUI();
+            updateAuthUI();
+
+            document.addEventListener('click', (e) => {
+                const profileBtn = document.getElementById('profileMenuBtn');
+                const profileDropdown = document.getElementById('profileDropdown');
+                if (profileBtn && profileDropdown && !profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+                    profileDropdown.classList.add('hidden');
+                }
+            });
+        });
+
+        // Generic Modal Toggle
+        function toggleModal(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('hidden');
+        }
+
+        // Profile Dropdown
+        function toggleProfileDropdown(e) {
+            if (e) e.stopPropagation();
+            document.getElementById('profileDropdown')?.classList.toggle('hidden');
+        }
+
+        function closeProfileDropdown() {
+            document.getElementById('profileDropdown')?.classList.add('hidden');
+        }
+
+        // Unified Auth Modal Controls
+        function openAuthModal(mode = 'login', fromCheckout = false, e = null) {
+            if (e) e.stopPropagation();
+            closeProfileDropdown();
+            pendingCheckoutRedirect = fromCheckout;
+
+            const notice = document.getElementById('checkoutAuthNotice');
+            if (fromCheckout) {
+                notice.classList.remove('hidden');
+            } else {
+                notice.classList.add('hidden');
+            }
+
+            switchAuthTab(mode);
+            document.getElementById('authModal').classList.remove('hidden');
+        }
+
+        function closeAuthModal() {
+            pendingCheckoutRedirect = false;
+            document.getElementById('authModal').classList.add('hidden');
+        }
+
+        function switchAuthTab(mode) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const tabLoginBtn = document.getElementById('tabLoginBtn');
+            const tabRegisterBtn = document.getElementById('tabRegisterBtn');
+            const title = document.getElementById('authModalTitle');
+            const subtitle = document.getElementById('authModalSubtitle');
+            const icon = document.getElementById('authModalIcon');
+            const loginSubmitText = document.getElementById('loginSubmitText');
+            const registerSubmitText = document.getElementById('registerSubmitText');
+
+            if (mode === 'login') {
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+
+                tabLoginBtn.className = 'py-2 text-xs sm:text-sm font-bold rounded-lg bg-white text-brand-700 shadow-xs transition cursor-pointer';
+                tabRegisterBtn.className = 'py-2 text-xs sm:text-sm font-bold rounded-lg text-gray-600 hover:text-gray-900 transition cursor-pointer';
+
+                title.innerText = 'Sign In to Your Account';
+                subtitle.innerText = 'Access fast checkout, warranty records & order tracking';
+                icon.className = 'fa-solid fa-right-to-bracket';
+                loginSubmitText.innerText = pendingCheckoutRedirect ? 'Sign In & Continue to Checkout' : 'Sign In';
+            } else {
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+
+                tabRegisterBtn.className = 'py-2 text-xs sm:text-sm font-bold rounded-lg bg-white text-accent-600 shadow-xs transition cursor-pointer';
+                tabLoginBtn.className = 'py-2 text-xs sm:text-sm font-bold rounded-lg text-gray-600 hover:text-gray-900 transition cursor-pointer';
+
+                title.innerText = 'Create Your Account';
+                subtitle.innerText = 'Join MK&HA Mobiles for instant checkout & order updates';
+                icon.className = 'fa-solid fa-user-plus';
+                registerSubmitText.innerText = pendingCheckoutRedirect ? 'Sign Up & Continue to Checkout' : 'Sign Up & Create Account';
+            }
+        }
+
+        // Authentication Handlers
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const rawName = email.split('@')[0].replace(/[._-]+/g, ' ');
+            const formattedName = rawName.replace(/\b\w/g, l => l.toUpperCase());
+
+            currentUser = { email: email, name: formattedName };
+            updateAuthUI();
+            document.getElementById('authModal').classList.add('hidden');
+
+            if (pendingCheckoutRedirect) {
+                pendingCheckoutRedirect = false;
+                proceedToCheckoutStep();
+            }
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            const email = document.getElementById('regEmail').value.trim();
+            const name = document.getElementById('regName').value.trim();
+
+            currentUser = { email: email, name: name };
+            updateAuthUI();
+            document.getElementById('authModal').classList.add('hidden');
+
+            if (pendingCheckoutRedirect) {
+                pendingCheckoutRedirect = false;
+                proceedToCheckoutStep();
+            }
+        }
+
+        function handleLogout(e) {
+            if (e) e.stopPropagation();
+            currentUser = null;
+            pendingCheckoutRedirect = false;
+            updateAuthUI();
+            closeProfileDropdown();
+        }
+
+        function updateAuthUI() {
+            const loggedOutMenu = document.getElementById('loggedOutMenu');
+            const loggedInMenu = document.getElementById('loggedInMenu');
+            const loggedInUserName = document.getElementById('loggedInUserName');
+            const loggedInUserEmail = document.getElementById('loggedInUserEmail');
+            const profileNavLabel = document.getElementById('profileNavLabel');
+            const profileNavSub = document.getElementById('profileNavSub');
+            const cartAuthHint = document.getElementById('cartAuthHint');
+
+            if (currentUser) {
+                loggedOutMenu.classList.add('hidden');
+                loggedInMenu.classList.remove('hidden');
+                loggedInUserName.innerText = currentUser.name;
+                loggedInUserEmail.innerText = currentUser.email;
+                profileNavLabel.innerText = currentUser.name;
+                profileNavSub.innerText = 'Signed In';
+                if (cartAuthHint) {
+                    cartAuthHint.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i>Signed in as <strong>${currentUser.name}</strong>`;
+                }
+            } else {
+                loggedOutMenu.classList.remove('hidden');
+                loggedInMenu.classList.add('hidden');
+                profileNavLabel.innerText = 'Account';
+                profileNavSub.innerText = 'Sign In / Sign Up';
+                if (cartAuthHint) {
+                    cartAuthHint.innerHTML = `<i class="fa-solid fa-circle-info text-brand-600 mr-1"></i>Sign in or create an account required at checkout`;
+                }
+            }
+        }
+
+        // Render Product Cards
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            const emptyState = document.getElementById('emptyState');
+
+            let filtered = products.filter(p => {
+                const matchesCategory = activeCategory === 'all' || p.category === activeCategory;
+                const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                      p.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                      p.unit.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            const sortVal = document.getElementById('sortBy')?.value || 'featured';
+            if (sortVal === 'price-low') filtered.sort((a, b) => a.price - b.price);
+            else if (sortVal === 'price-high') filtered.sort((a, b) => b.price - a.price);
+            else if (sortVal === 'name') filtered.sort((a, b) => a.name.localeCompare(b.name));
+
+            document.getElementById('productCountBadge').innerText = `${filtered.length} items`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            grid.innerHTML = filtered.map(product => `
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition flex flex-col justify-between overflow-hidden group">
+                    <div class="relative overflow-hidden bg-gray-50 h-48 sm:h-52 flex items-center justify-center p-4">
+                        <span class="absolute top-3 left-3 bg-brand-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider z-10 shadow-xs">
+                            ${product.badge}
+                        </span>
+                        <img src="${product.image}" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/0c4a6e/ffffff?text=${encodeURIComponent(product.name)}';" 
+                             alt="${product.name}" 
+                             class="h-full w-full object-cover rounded-xl group-hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+                        <div>
+                            <div class="flex items-center space-x-1 text-amber-500 text-xs mb-1">
+                                <i class="fa-solid fa-star"></i>
+                                <span class="font-bold text-gray-700">${product.rating}</span>
+                                <span class="text-gray-400 font-normal">(${Math.floor(product.rating * 24)})</span>
+                            </div>
+                            <h3 class="font-bold text-gray-800 text-sm sm:text-base leading-snug line-clamp-2">${product.name}</h3>
+                            <p class="text-xs text-gray-500 mt-1">${product.unit}</p>
+                        </div>
+                        <div class="pt-3 border-t border-gray-100 flex items-center justify-between gap-2">
+                            <div>
+                                <span class="text-[11px] text-gray-400 block">Price</span>
+                                <span class="text-base sm:text-lg font-extrabold text-brand-700">£${product.price.toFixed(2)}</span>
+                            </div>
+                            <button onclick="addToCart(${product.id})" class="bg-brand-600 hover:bg-brand-700 text-white px-3.5 py-2.5 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 shadow-sm cursor-pointer shrink-0">
+                                <i class="fa-solid fa-cart-plus"></i>
+                                <span>Add</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Category Filter
+        function filterCategory(category, buttonEl) {
+            activeCategory = category;
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-600', 'text-white', 'active');
+                btn.classList.add('text-gray-300', 'hover:bg-gray-800');
+            });
+            if (buttonEl) {
+                buttonEl.classList.add('bg-brand-600', 'text-white', 'active');
+                buttonEl.classList.remove('text-gray-300', 'hover:bg-gray-800');
+            }
+            const titles = {
+                'all': 'All Smartphones & Accessories',
+                'apple': 'Apple iPhones & iPads',
+                'samsung': 'Samsung Galaxy Series',
+                'google': 'Google Pixel Handsets',
+                'accessories': 'Cases, Cables & Power Banks',
+                'repairs': 'In-Store Express Repair Services'
+            };
+            document.getElementById('currentCategoryTitle').innerText = titles[category] || 'Products';
+            renderProducts();
+        }
+
+        // Search logic
+        function handleSearch() {
+            const input = document.getElementById('searchInput');
+            searchQuery = input.value;
+            document.getElementById('mobileSearchInput').value = searchQuery;
+            document.getElementById('clearSearchBtn').classList.toggle('hidden', searchQuery.length === 0);
+            document.getElementById('clearMobileSearchBtn').classList.toggle('hidden', searchQuery.length === 0);
+            renderProducts();
+        }
+
+        function handleMobileSearch() {
+            searchQuery = document.getElementById('mobileSearchInput').value;
+            document.getElementById('searchInput').value = searchQuery;
+            document.getElementById('clearSearchBtn').classList.toggle('hidden', searchQuery.length === 0);
+            document.getElementById('clearMobileSearchBtn').classList.toggle('hidden', searchQuery.length === 0);
+            renderProducts();
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('mobileSearchInput').value = '';
+            document.getElementById('clearSearchBtn').classList.add('hidden');
+            document.getElementById('clearMobileSearchBtn').classList.add('hidden');
+            searchQuery = '';
+            renderProducts();
+        }
+
+        function sortProducts() {
+            renderProducts();
+        }
+
+        // Cart Drawer
+        function toggleCartDrawer() {
+            document.getElementById('cartDrawer').classList.toggle('hidden');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            const existing = cart.find(item => item.id === productId);
+            if (existing) existing.quantity += 1;
+            else cart.push({ ...product, quantity: 1 });
+            updateCartUI();
+            toggleCartDrawer();
+        }
+
+        function updateCartQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+            item.quantity += delta;
+            if (item.quantity <= 0) cart = cart.filter(i => i.id !== productId);
+            updateCartUI();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(i => i.id !== productId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartContainer = document.getElementById('cartItemsContainer');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+            const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+            const delivery = subtotal >= 50 || subtotal === 0 ? 0 : 4.99;
+            const total = subtotal + delivery;
+
+            document.getElementById('cartCount').innerText = totalItems;
+            document.getElementById('cartTotalHeader').innerText = `£${total.toFixed(2)}`;
+            document.getElementById('cartSubtotal').innerText = `£${subtotal.toFixed(2)}`;
+            document.getElementById('cartDelivery').innerText = delivery === 0 ? "FREE" : `£${delivery.toFixed(2)}`;
+            document.getElementById('cartTotal').innerText = `£${total.toFixed(2)}`;
+
+            if (cart.length === 0) {
+                if (checkoutBtn) checkoutBtn.disabled = true;
+                cartContainer.innerHTML = `
+                    <div class="text-center py-16">
+                        <i class="fa-solid fa-mobile-screen text-4xl text-gray-300 mb-3"></i>
+                        <p class="text-gray-500 font-medium text-sm">Your cart is empty</p>
+                        <button onclick="toggleCartDrawer()" class="mt-4 text-xs font-bold text-brand-600 hover:underline cursor-pointer">Browse Products</button>
+                    </div>
+                `;
+                return;
+            }
+
+            if (checkoutBtn) checkoutBtn.disabled = false;
+            cartContainer.innerHTML = cart.map(item => `
+                <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                    <img src="${item.image}" alt="${item.name}" class="w-14 h-14 object-cover rounded-lg shrink-0">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-xs font-bold text-gray-800 leading-tight truncate">${item.name}</h4>
+                        <span class="text-[11px] text-gray-500">£${item.price.toFixed(2)}</span>
+                        <div class="flex items-center space-x-2 mt-1.5">
+                            <button onclick="updateCartQuantity(${item.id}, -1)" aria-label="Decrease quantity" class="w-7 h-7 rounded-md bg-white border border-gray-300 flex items-center justify-center text-xs font-bold text-gray-700 hover:bg-gray-100 cursor-pointer">-</button>
+                            <span class="text-xs font-bold text-gray-800 w-4 text-center">${item.quantity}</span>
+                            <button onclick="updateCartQuantity(${item.id}, 1)" aria-label="Increase quantity" class="w-7 h-7 rounded-md bg-white border border-gray-300 flex items-center justify-center text-xs font-bold text-gray-700 hover:bg-gray-100 cursor-pointer">+</button>
+                        </div>
+                    </div>
+                    <div class="text-right shrink-0">
+                        <span class="text-xs font-extrabold text-brand-700 block">£${(item.price * item.quantity).toFixed(2)}</span>
+                        <button onclick="removeFromCart(${item.id})" aria-label="Remove item" class="text-xs text-red-500 hover:text-red-700 mt-2 p-1 cursor-pointer">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Checkout Gate: Requires Sign In or Sign Up first
+        function openCheckoutModal() {
+            if (cart.length === 0) return;
+            toggleCartDrawer();
+
+            if (!currentUser) {
+                // Require Sign In or Sign Up before proceeding to checkout
+                openAuthModal('login', true);
+                return;
+            }
+
+            proceedToCheckoutStep();
+        }
+
+        function proceedToCheckoutStep() {
+            const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+            const delivery = subtotal >= 50 ? 0 : 4.99;
+            document.getElementById('modalCartTotal').innerText = `£${(subtotal + delivery).toFixed(2)}`;
+
+            if (currentUser) {
+                const nameInput = document.getElementById('checkoutFullName');
+                const accountBadge = document.getElementById('checkoutAccountBadge');
+                if (nameInput && !nameInput.value) {
+                    nameInput.value = currentUser.name;
+                }
+                if (accountBadge) {
+                    accountBadge.innerText = `${currentUser.name} (${currentUser.email})`;
+                }
+            }
+
+            toggleModal('checkoutModal');
+        }
+
+        function handleCheckoutSubmit(e) {
+            e.preventDefault();
+            toggleModal('checkoutModal');
+            cart = [];
+            updateCartUI();
+            document.getElementById('successTitle').innerText = "Order Confirmed!";
+            document.getElementById('successMsg').innerText = `Thank you${currentUser ? ', ' + currentUser.name : ''}, for shopping with MK&HA Mobiles. Confirmation has been sent to ${currentUser ? currentUser.email : 'your email'}!`;
+            toggleModal('successModal');
+        }
+
+        function handleRepairSubmit(e) {
+            e.preventDefault();
+            toggleModal('repairModal');
+            document.getElementById('successTitle').innerText = "Repair Booked!";
+            document.getElementById('successMsg').innerText = "Your repair appointment has been confirmed. Visit us at 252 Burges Road, E6 2ES.";
+            toggleModal('successModal');
+        }
+
+        function handleTradeInSubmit(e) {
+            e.preventDefault();
+            const cond = document.getElementById('tradeCondition').value;
+            let quote = 280;
+            if (cond === 'flawless') quote = 340;
+            if (cond === 'fair') quote = 200;
+            if (cond === 'faulty') quote = 90;
+            document.getElementById('valuationAmount').innerText = `£${quote}.00`;
+            document.getElementById('valuationResult').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
